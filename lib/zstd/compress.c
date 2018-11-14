@@ -2249,7 +2249,10 @@ void ZSTD_compressBlock_lazy_extDict_generic(ZSTD_CCtx *ctx, const void *src, si
 	}
 }
 
-void ZSTD_compressBlock_greedy_extDict(ZSTD_CCtx *ctx, const void *src, size_t srcSize) { ZSTD_compressBlock_lazy_extDict_generic(ctx, src, srcSize, 0, 0); }
+static void ZSTD_compressBlock_greedy_extDict(ZSTD_CCtx *ctx, const void *src, size_t srcSize)
+{
+	ZSTD_compressBlock_lazy_extDict_generic(ctx, src, srcSize, 0, 0);
+}
 
 static void ZSTD_compressBlock_lazy_extDict(ZSTD_CCtx *ctx, const void *src, size_t srcSize)
 {
@@ -2979,7 +2982,7 @@ size_t ZSTD_CStreamWorkspaceBound(ZSTD_compressionParameters cParams)
 	return ZSTD_CCtxWorkspaceBound(cParams) + ZSTD_ALIGN(sizeof(ZSTD_CStream)) + ZSTD_ALIGN(inBuffSize) + ZSTD_ALIGN(outBuffSize);
 }
 
-ZSTD_CStream *ZSTD_createCStream_advanced(ZSTD_customMem customMem)
+static ZSTD_CStream *ZSTD_createCStream_advanced(ZSTD_customMem customMem)
 {
 	ZSTD_CStream *zcs;
 
