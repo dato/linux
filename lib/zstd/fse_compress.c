@@ -474,7 +474,7 @@ size_t FSE_count_wksp(unsigned *count, unsigned *maxSymbolValuePtr, const void *
 	`FSE_symbolCompressionTransform symbolTT[maxSymbolValue+1];`  // This size is variable
 Allocation is manual (C standard does not support variable-size structures).
 */
-size_t FSE_sizeof_CTable(unsigned maxSymbolValue, unsigned tableLog)
+ZSTD_STATIC size_t FSE_sizeof_CTable(unsigned maxSymbolValue, unsigned tableLog)
 {
 	if (tableLog > FSE_MAX_TABLELOG)
 		return ERROR(tableLog_tooLarge);

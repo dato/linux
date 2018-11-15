@@ -431,7 +431,7 @@ static void ZSTD_reduceIndex(ZSTD_CCtx *zc, const U32 reducerValue)
 
 /* See doc/zstd_compression_format.md for detailed format description */
 
-size_t ZSTD_noCompressBlock(void *dst, size_t dstCapacity, const void *src, size_t srcSize)
+ZSTD_STATIC size_t ZSTD_noCompressBlock(void *dst, size_t dstCapacity, const void *src, size_t srcSize)
 {
 	if (srcSize + ZSTD_blockHeaderSize > dstCapacity)
 		return ERROR(dstSize_tooSmall);
